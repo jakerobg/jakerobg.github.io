@@ -16,4 +16,4 @@ about:
 
 ---
 
-About this blog
+Jake's CS451 blog
