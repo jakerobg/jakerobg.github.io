@@ -53,7 +53,7 @@
     "href": "index.html",
     "title": "My Awesome CSCI 0451 Blog",
     "section": "",
-    "text": "Second Post\n\n\n\n\n\nA new blog post that I just made!\n\n\n\n\n\nMar 10, 2023\n\n\nPhil Chodrow\n\n\n\n\n\n\n\n\n\n\n\n\nTimnit Gebru\n\n\n\n\n\nA new blog post that I just made!\n\n\n\n\n\nMar 10, 2023\n\n\nPhil Chodrow\n\n\n\n\n\n\n\n\n\n\n\n\nHello Blog\n\n\n\n\n\nAn example blog post illustrating the key techniques you’ll need to demonstrate your learning in CSCI 0451.\n\n\n\n\n\nJan 10, 2023\n\n\nPhil Chodrow\n\n\n\n\n\n\nNo matching items"
+    "text": "Implementing the Perceptron Algorithm\n\n\n\n\n\nImplementing the perceptron algorithm and testing it in multiple experiments\n\n\n\n\n\nMar 25, 2024\n\n\nJake Gilbert\n\n\n\n\n\n\n\n\n\n\n\n\nClassifying Palmer Penguins\n\n\n\n\n\nClassifying Palmer Penguins based on quantitative and qualitative data\n\n\n\n\n\nFeb 22, 2024\n\n\nJake Gilbert\n\n\n\n\n\n\n\n\n\n\n\n\nSecond Post\n\n\n\n\n\nA new blog post that I just made!\n\n\n\n\n\nMar 10, 2023\n\n\nPhil Chodrow\n\n\n\n\n\n\n\n\n\n\n\n\nTimnit Gebru\n\n\n\n\n\nA new blog post that I just made!\n\n\n\n\n\nMar 10, 2023\n\n\nPhil Chodrow\n\n\n\n\n\n\n\n\n\n\n\n\nHello Blog\n\n\n\n\n\nAn example blog post illustrating the key techniques you’ll need to demonstrate your learning in CSCI 0451.\n\n\n\n\n\nJan 10, 2023\n\n\nPhil Chodrow\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "posts/classifying-palmer-penguins/index.html",
@@ -68,5 +68,12 @@
     "title": "Classifying Palmer Penguins",
     "section": "Math",
     "text": "Math\nIn addition to regular text using the Markdown specification, you can also write mathematics, enclosed between dollar signs. The syntax for writing math is very similar to the syntax used in the \\(\\LaTeX\\) markup language. For example, $f(x) \\approx y$ renders to \\(f(x) \\approx y\\). To place complex mathematical expressions on their own lines, use double dollar signs. For example, the expression\n$$\\mathcal{L}(a, b) = \\sum_{i = 1}^n (ax_i + b - y_i)^2$$\nrenders to:\n\\[\\mathcal{L}(a, b) = \\sum_{i = 1}^n (ax_i + b - y_i)^2\\;.\\]\nBehind the scenes, math is powered by the MathJax engine. For more on how to write math, check this handy tutorial and quick reference."
+  },
+  {
+    "objectID": "posts/perceptron/index.html",
+    "href": "posts/perceptron/index.html",
+    "title": "Implementing the Perceptron Algorithm",
+    "section": "",
+    "text": "%load_ext autoreload %autoreload 2 from perceptron import Perceptron, PerceptronOptimizer"
   }
 ]
