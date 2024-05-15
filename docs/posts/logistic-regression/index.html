@@ -8,7 +8,7 @@
 
 <meta name="author" content="Jake gilbert">
 <meta name="dcterms.date" content="2024-05-05">
-<meta name="description" content="Exploring the Logistic Regression algorithm and gradient descent">
+<meta name="description" content="Exploring the Logistic Regression algorithm, vanilla and spicy gradient descent and the effects of overfitting">
 
 <title>My Awesome CSCI 0451 Blog - Implementing Logistic Regression</title>
 <style>
@@ -171,7 +171,7 @@ background-size: cover;
       <h1 class="title">Implementing Logistic Regression</h1>
                   <div>
         <div class="description">
-          Exploring the Logistic Regression algorithm and gradient descent
+          Exploring the Logistic Regression algorithm, vanilla and spicy gradient descent and the effects of overfitting
         </div>
       </div>
                 </div>
@@ -223,6 +223,7 @@ background-size: cover;
 </div>
 <section id="abstract" class="level1">
 <h1>Abstract</h1>
+<p>The code for the model can be found <a href="https://github.com/jakerobg/cs451blog/blob/main/posts/logistic-regression/logistic.py">here</a></p>
 <p>In this blog post, I implemented the popular classification algorithm Logistic Regression with both spicy and vanilla gradient descent. I conducted three experiments. In the first, I found that with no momentum (beta value) vanilla gradient descent was shown to find the optimal weight value for the model as the loss converged at its smallest value. The next experiment expanded on gradient descent by adding momentum and a faster learning rate, which kept the same accuracy, but improved the efficiency of the model’s convergence—this was an implementation of “spicy” gradient descent. I then explored the effects of overfitting. I created training and testing datasets with more dimensions (features) than data points, and the resulting accuracy showed a 100% accuracy for training data but a lower accuracy (94%) for test data. Within these experiments, I was able to see the complexities of logistic regression, its advantages of using gradient descent to find an optimal weight and understand/visualize how overfitting can hinder a model.</p>
 </section>
 <section id="experiments" class="level1">
