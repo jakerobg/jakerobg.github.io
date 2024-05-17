@@ -2,6 +2,7 @@
   {
     "listing": "/index.html",
     "items": [
+      "/posts/optimal-decision-making/index.html",
       "/posts/logistic-regression/index.html",
       "/posts/music-classification/index.html",
       "/posts/perceptron/index.html",
