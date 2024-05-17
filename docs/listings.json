@@ -2,10 +2,10 @@
   {
     "listing": "/index.html",
     "items": [
+      "/posts/perceptron/index.html",
       "/posts/optimal-decision-making/index.html",
       "/posts/logistic-regression/index.html",
       "/posts/music-classification/index.html",
-      "/posts/perceptron/index.html",
       "/posts/classifying-palmer-penguins/index.html",
       "/posts/new-test-post/index.html",
       "/posts/new-new-test-post/index.html",
