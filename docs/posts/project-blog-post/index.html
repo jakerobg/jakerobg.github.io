@@ -1,0 +1,1133 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.4.550">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>My Awesome CSCI 0451 Blog - UNCHR - ML Challenge</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<style>
+
+      .quarto-title-block .quarto-title-banner h1,
+      .quarto-title-block .quarto-title-banner h2,
+      .quarto-title-block .quarto-title-banner h3,
+      .quarto-title-block .quarto-title-banner h4,
+      .quarto-title-block .quarto-title-banner h5,
+      .quarto-title-block .quarto-title-banner h6
+      {
+        color: white;
+      }
+
+      .quarto-title-block .quarto-title-banner {
+        color: white;
+background-image: url(../../img/landscape.png);
+background-size: cover;
+      }
+</style>
+
+
+<link rel="stylesheet" href="../../styles.css">
+</head>
+
+<body class="nav-fixed fullcontent">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top quarto-banner">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">My Awesome CSCI 0451 Blog</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../about.html"> 
+<span class="menu-text">About</span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/"> <i class="bi bi-github" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://twitter.com"> <i class="bi bi-twitter" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+          <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<header id="title-block-header" class="quarto-title-block default page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-body">
+      <h1 class="title">UNCHR - ML Challenge</h1>
+                      </div>
+  </div>
+    
+  
+  <div class="quarto-title-meta">
+
+      
+    
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    
+<!-- main -->
+<main class="content quarto-banner-title-block" id="quarto-document-content">
+
+
+
+
+
+<section id="unchr---ml-challenge" class="level1">
+<h1>UNCHR - ML Challenge</h1>
+<p>Jamie Hackney, Mihir Singh, Jake Gilbert</p>
+<section id="abstract" class="level2">
+<h2 class="anchored" data-anchor-id="abstract">Abstract</h2>
+<p>This project seeks to develop, implement, and evaluate various machine learning models to accurately predict refugee population movements in Somalia as part of the United Nations Commissioner for Refugees (UNHCR) Machine Learning Challenge. The data used by our models’ was collected by the UNHCR between 2015 and 2024 in Somalia. It contains information on population movements, markets, health, conflicts, and climate. We developed a web scraper to collect this data and combine it all into a single dataframe. To deal with missing data values, we created two datasets, one by dropping the missing values and the other by imputing them. Then, we built a Logistic Regression, Decision Tree, and Random Forest model on different subsets of these two datasets. We tested these models to see how accurately they could predict the number of refugee arrivals into a specific district in Somalia by computing the root mean squared error (RMSE), framing it as a regression problem. We found that the models had, on average, very high root mean squared errors (indicating a poor fit on the data), yet also had high R<sup>2</sup> values (indicating a good fit on the data). We believe this discrepancy is explained by the fact that there are several very large outliers present in the data. To validate this, we binned the predictions into the three severity levels proposed by the UN, and treated it as a classification problem. When doing so, our best model, a Decision Tree Regressor trained on a subset of the dataset where missing features were dropped, achieved an accuracy of 99.5%. This model was also able to perfectly predict the exact number of arrivals 98% of the time, further supporting our hypothesis that these models fit the data very well and the high RMSE is explained by the existence of several large outliers.</p>
+</section>
+<section id="values-statement" class="level2">
+<h2 class="anchored" data-anchor-id="values-statement">Values Statement</h2>
+<p>The intended users of our project are the Somalian government and other NGOs that support refugees in the area. However, our project deals directly with people, as we are predicting where we expect refugees to move in Somalia. Because of this, the entire population of refugees in Somalia could potentially be affected by our project, if it were to be used by any of these agencies or governments to inform resource allocations. Both refugees in Somalia and the groups that support these refugees stand to benefit from our project, assuming the models are an effective tool. If this is the case, then these agencies can better allocate resources, which will benefit the refugees themselves as they will have access to more resources. Additionally, the government and agencies supporting them will benefit from more efficient resource movement. Conversely, if our models prove to be inaccurate enough that they cause resources to be misallocated, both refugees and the groups supporting them could be seriously harmed. Additionally, we note the possibility that bad actors could co-opt these models to predict refugee movements for malicious purposes.</p>
+<p>We chose to work on this project because we were interested in the intersection between machine learning and public policy. When we found the UN challenge related to this project, we became very interested in the cause of this project, and found the ability to help refugees and their support groups compelling. Assuming that our models are an effective tool for helping agencies allocate resources for refugees, we believe that the benefits to refugee populations and their support groups will bring some relief to that region.</p>
+</section>
+<section id="introduction" class="level2">
+<h2 class="anchored" data-anchor-id="introduction">Introduction</h2>
+<p>Our program addresses the humanitarian crisis in Somalia related to refugee movements and forcibly displaced people. The ability to accurately predict patterns in forcibly displaced peoples movements is crucial to the development of public policies that provide aid and resources to refugees. This is not a novel problem, and in fact has been approached several times before. Suleimenova et al., Gulden et al., and Lin et al.&nbsp;all developed agent based models to predict population movements. Gleick investigated the relationship between water and conflict in Syria, drawing a connection between water scarcity and conflicts, which in turn can drive population movements. Finally, Finnley noted an increase in migration of women and children during the severe drought of 1983-1985.</p>
+<p>We focused on building models trained on a variety of data, including climate, conflicts, and market prices. By looking at a variety of conditions affecting human movement, we predict the movement patterns of displaced people in Somalia. The goal of this project is to effectively predict these population movements so that agencies supporting refugee populations in this area can better allocate resources to regions that are expected to receive a high number of migrants.</p>
+</section>
+<section id="materials-and-methods" class="level2">
+<h2 class="anchored" data-anchor-id="materials-and-methods">Materials and Methods</h2>
+<div id="cell-2" class="cell" data-execution_count="15">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> models <span class="im">import</span> dropNA</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> models <span class="im">import</span> impute</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> models <span class="im">import</span> evaluate_LR</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> models <span class="im">import</span> evaluate_DT</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> models <span class="im">import</span> evaluate_RF</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.model_selection <span class="im">import</span> train_test_split</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.tree <span class="im">import</span> DecisionTreeRegressor</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> warnings</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>warnings.filterwarnings(<span class="st">'ignore'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<section id="our-data" class="level3">
+<h3 class="anchored" data-anchor-id="our-data">Our Data</h3>
+<p>All of our data came from the Food Security and Nutrition Analysis Unit Dashboard for Somalia (FSNAU). This organization collects data related to food and security in Somalia. FSNAU provides access to this data through a public facing dashboard. Users can select what data they would like to look at and which time frames (in six month increments).</p>
+<p>For our data, focused on creating two datasets, one where we drop missing values and one where we impute them. Within these datasets, we further split them into all available features, and just the top nine features as recommended by the UNHCR in their previous work with this data (project <a href="https://jetson.unhcr.org/tech.html">Jetson</a>). Due to data availability, we focused on data from 2015 - 2024.</p>
+<div id="cell-4" class="cell" data-execution_count="16">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># load data</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.read_csv(<span class="st">'data/combined_data.csv'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="our-approach" class="level3">
+<h3 class="anchored" data-anchor-id="our-approach">Our Approach</h3>
+<p>The goal of our models was to predict the number of refugees arriving in a certain district in Somalia. We used the “Arrivals” column of our data as the target feature for our models to predict. For training features, we either trained our models on all features available on the FSNAU dashboard, or the nine features recommended by the UNHCR (region, district, month, year, rainfall, number of conflict fatalities, number of conflict incidents, water price, and goat price). We chose to run models trained on these nine features because the UN found these particularly helpful when building their own machine learning models (<a href="https://jetson.unhcr.org/tech.html">Jetson Data</a>). For all models, we dropped the feature describing the number of departures because such data can only be collected after the fact. That is, at the time this model would be run in a “real” scenario, there would be no way of knowing the number of departures in a district for the entire month; a month must first pass for this data to become known. Finally, we split the data into train and test groups, with 80% of the data in the train split and 20% of the data in the test split. Depending on the dataset used, the exact number of rows varied, but for the dataset we found to be best (dropping missing values and only using the nine best features), we had 51,812 train rows and 12,953 test rows.</p>
+<div id="cell-6" class="cell" data-execution_count="17">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># create four dataframes of the data</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>df_dropna <span class="op">=</span> dropNA(df)</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>df_dropna_t9 <span class="op">=</span> dropNA(df, top_9<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>df_impute <span class="op">=</span> impute(df)</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>df_impute_t9 <span class="op">=</span> impute(df, top_9<span class="op">=</span><span class="va">True</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>We trained a Linear Regression model, Decision Tree Regressor, and Random Forest Regressor model from Sci-Kit Learn to make our predictions. These models were chosen because predicting the number of refugees arriving is a regression problem, where we want our model to give us an estimate of the number of arrivals in a district. We trained each model on the four datasets we created: drop missing values and use all features, drop missing values and use only the best nine features, impute missing values and use all features, and impute missing values and use only the nine best features. The reason for choosing to both impute and drop missing values is to determine the best approach to deal with these missing values, of which there were many. In fact, out of the 328,856 available rows, only 230 had no missing values. A single missing value in any one feature can render the entire row obsolete in training or testing. The benefit of imputing the data is that we end up with much more data to train and test with, potentially increasing accuracy and decreasing the possibility of overfitting. The drawback is that the data is generally lower quality, as many values are estimates not actual observations. Dropping missing values, on the other hand, leads to a smaller dataset, potentially decreasing accuracy and increasing the possibility of overfitting. The data we are left with, however, is much higher quality since it is composed entirely of actual observations.</p>
+<p>The four datasets that result from this process, as well as their sizes are below:</p>
+<ul>
+<li><code>df_dropna</code> includes all rows without a single Na or NaN in any feature.
+<ul>
+<li>train size: 230 x 23</li>
+<li>test size: 55 x 23</li>
+</ul></li>
+<li><code>df_dropna_t9</code> includes all rows without a single Na or NaN in any of the top nine features.
+<ul>
+<li>train size: 51,812 x 10</li>
+<li>test size: 12,953 x 10</li>
+</ul></li>
+<li><code>df_impute</code> includes all rows and features and fills in missing values by estimating their value using SciKitLearn’s SimpleImputer.
+<ul>
+<li>train size: 263084 x 23</li>
+<li>test size: 65,772 x 23</li>
+</ul></li>
+<li><code>df_impute_t9</code> includes all rows and only the best nine features, and fills in missing values by estimating their value using SciKitLearn’s SimpleImputer.
+<ul>
+<li>train size: 263084 x 10</li>
+<li>test size: 65,772 x 10</li>
+</ul></li>
+</ul>
+<p>The disadvantage of imputing the data can be seen in the fact that it produces negative values in the “Arrivals” column, which is impossible.</p>
+<p>We then evaluated each of the models on each data set using R2, RMSE, and the classification accuracy for the three alarm levels. This classification accuracy came from binning the predictions into one of the three population movement <a href="https://dashboard.fsnau.org/application/cache/images/EWEA_Dashboard_Indictor_Thresholds.pdf">alarm levels</a> set by FSNAU and calculating the percent of times the model predicted the correct alarm level. The reason we included this metric is because the dataset contained several large outliers that heavily skewed the RMSE, which we will go into more at the end of this section. Additionally, we figured that in a real world scenario, it is more likely the aid groups would care more about whether the incoming number of migrants is low, medium, or high, rather than an exact number.</p>
+</section>
+</section>
+<section id="results" class="level2">
+<h2 class="anchored" data-anchor-id="results">Results</h2>
+<p>We evaluate the models using three different metrics, R<sup>2</sup>, RMSE, and the alarm level classification accuracy. The R<sup>2</sup> value measures how well the model explains the observed data values. RMSE measures the average error for a prediction, with the interpretation being that the RMSE value is the average number of people the predictions are off by. Finally, the classification accuracy measures how often the models correctly predict the alarm level. In other words, the classification accuracy is how often the models can correctly predict whether the arrivals will be less than 1000 people, between 1000 and 5000 people, or greater than 5000 people. The tables below show the model performances when evaluated with each of these metrics on the testing data.</p>
+<section id="linear-regression" class="level3">
+<h3 class="anchored" data-anchor-id="linear-regression">Linear Regression</h3>
+<div id="cell-10" class="cell" data-execution_count="18">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># dropna</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Drop Missing Values, Use All Features:"</span>)</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>train, test <span class="op">=</span> train_test_split(df_dropna, test_size<span class="op">=</span><span class="fl">0.2</span>)</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>X_train <span class="op">=</span> train.drop([<span class="st">'Arrivals'</span>], axis<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>y_train <span class="op">=</span> train[[<span class="st">'Arrivals'</span>]]</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>X_test <span class="op">=</span> test.drop([<span class="st">'Arrivals'</span>], axis<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>y_test <span class="op">=</span> test[[<span class="st">'Arrivals'</span>]]</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>evaluate_LR(X_train, y_train, X_test, y_test)</span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a><span class="co"># dropna top 9</span></span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Drop Missing Values, Use Best Nine Features:"</span>)</span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>train, test <span class="op">=</span> train_test_split(df_dropna_t9, test_size<span class="op">=</span><span class="fl">0.2</span>)</span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>X_train <span class="op">=</span> train.drop([<span class="st">'Arrivals'</span>], axis<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>y_train <span class="op">=</span> train[[<span class="st">'Arrivals'</span>]]</span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>X_test <span class="op">=</span> test.drop([<span class="st">'Arrivals'</span>], axis<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>y_test <span class="op">=</span> test[[<span class="st">'Arrivals'</span>]]</span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>evaluate_LR(X_train, y_train, X_test, y_test)</span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a><span class="co"># impute</span></span>
+<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Impute Missing Values, Use All Features:"</span>)</span>
+<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a>train, test <span class="op">=</span> train_test_split(df_impute, test_size<span class="op">=</span><span class="fl">0.2</span>)</span>
+<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a>X_train <span class="op">=</span> train.drop([<span class="st">'Arrivals'</span>], axis<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a>y_train <span class="op">=</span> train[[<span class="st">'Arrivals'</span>]]</span>
+<span id="cb4-24"><a href="#cb4-24" aria-hidden="true" tabindex="-1"></a>X_test <span class="op">=</span> test.drop([<span class="st">'Arrivals'</span>], axis<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb4-25"><a href="#cb4-25" aria-hidden="true" tabindex="-1"></a>y_test <span class="op">=</span> test[[<span class="st">'Arrivals'</span>]]</span>
+<span id="cb4-26"><a href="#cb4-26" aria-hidden="true" tabindex="-1"></a>evaluate_LR(X_train, y_train, X_test, y_test)</span>
+<span id="cb4-27"><a href="#cb4-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-28"><a href="#cb4-28" aria-hidden="true" tabindex="-1"></a><span class="co"># impute top 9</span></span>
+<span id="cb4-29"><a href="#cb4-29" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Impute Missing Values, Use Best Nine Features:"</span>)</span>
+<span id="cb4-30"><a href="#cb4-30" aria-hidden="true" tabindex="-1"></a>train, test <span class="op">=</span> train_test_split(df_impute_t9, test_size<span class="op">=</span><span class="fl">0.2</span>)</span>
+<span id="cb4-31"><a href="#cb4-31" aria-hidden="true" tabindex="-1"></a>X_train <span class="op">=</span> train.drop([<span class="st">'Arrivals'</span>], axis<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb4-32"><a href="#cb4-32" aria-hidden="true" tabindex="-1"></a>y_train <span class="op">=</span> train[[<span class="st">'Arrivals'</span>]]</span>
+<span id="cb4-33"><a href="#cb4-33" aria-hidden="true" tabindex="-1"></a>X_test <span class="op">=</span> test.drop([<span class="st">'Arrivals'</span>], axis<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb4-34"><a href="#cb4-34" aria-hidden="true" tabindex="-1"></a>y_test <span class="op">=</span> test[[<span class="st">'Arrivals'</span>]]</span>
+<span id="cb4-35"><a href="#cb4-35" aria-hidden="true" tabindex="-1"></a>evaluate_LR(X_train, y_train, X_test, y_test)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Drop Missing Values, Use All Features:
+score: -0.5120080054803344
+rmse: 4004.408898337328
+classification accuracy: 1.0
+
+
+Drop Missing Values, Use Best Nine Features:
+score: 0.022127246581247872
+rmse: 5531.715825977417
+classification accuracy: 0.46383077279394735
+
+
+Impute Missing Values, Use All Features:
+score: 0.33164398083006263
+rmse: 3641.15860937481
+classification accuracy: 0.6846834519248313
+
+
+Impute Missing Values, Use Best Nine Features:
+score: 0.09979970878891353
+rmse: 4044.098286302458
+classification accuracy: 0.6812321352551237
+
+</code></pre>
+</div>
+</div>
+</section>
+<section id="decision-tree" class="level3">
+<h3 class="anchored" data-anchor-id="decision-tree">Decision Tree</h3>
+<div id="cell-12" class="cell" data-execution_count="19">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># dropna</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Drop Missing Values, Use All Features:"</span>)</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>train, test <span class="op">=</span> train_test_split(df_dropna, test_size<span class="op">=</span><span class="fl">0.2</span>)</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>X_train <span class="op">=</span> train.drop([<span class="st">'Arrivals'</span>], axis<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>y_train <span class="op">=</span> train[[<span class="st">'Arrivals'</span>]]</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>X_test <span class="op">=</span> test.drop([<span class="st">'Arrivals'</span>], axis<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>y_test <span class="op">=</span> test[[<span class="st">'Arrivals'</span>]]</span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>evaluate_DT(X_train, y_train, X_test, y_test)</span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a><span class="co"># dropna top 9</span></span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Drop Missing Values, Use Best Nine Features:"</span>)</span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>train, test <span class="op">=</span> train_test_split(df_dropna_t9, test_size<span class="op">=</span><span class="fl">0.2</span>)</span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>X_train <span class="op">=</span> train.drop([<span class="st">'Arrivals'</span>], axis<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>y_train <span class="op">=</span> train[[<span class="st">'Arrivals'</span>]]</span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a>X_test <span class="op">=</span> test.drop([<span class="st">'Arrivals'</span>], axis<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a>y_test <span class="op">=</span> test[[<span class="st">'Arrivals'</span>]]</span>
+<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a>evaluate_DT(X_train, y_train, X_test, y_test)</span>
+<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a><span class="co"># impute</span></span>
+<span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Impute Missing Values, Use All Features:"</span>)</span>
+<span id="cb6-21"><a href="#cb6-21" aria-hidden="true" tabindex="-1"></a>train, test <span class="op">=</span> train_test_split(df_impute, test_size<span class="op">=</span><span class="fl">0.2</span>)</span>
+<span id="cb6-22"><a href="#cb6-22" aria-hidden="true" tabindex="-1"></a>X_train <span class="op">=</span> train.drop([<span class="st">'Arrivals'</span>], axis<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb6-23"><a href="#cb6-23" aria-hidden="true" tabindex="-1"></a>y_train <span class="op">=</span> train[[<span class="st">'Arrivals'</span>]]</span>
+<span id="cb6-24"><a href="#cb6-24" aria-hidden="true" tabindex="-1"></a>X_test <span class="op">=</span> test.drop([<span class="st">'Arrivals'</span>], axis<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb6-25"><a href="#cb6-25" aria-hidden="true" tabindex="-1"></a>y_test <span class="op">=</span> test[[<span class="st">'Arrivals'</span>]]</span>
+<span id="cb6-26"><a href="#cb6-26" aria-hidden="true" tabindex="-1"></a>evaluate_DT(X_train, y_train, X_test, y_test)</span>
+<span id="cb6-27"><a href="#cb6-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-28"><a href="#cb6-28" aria-hidden="true" tabindex="-1"></a><span class="co"># impute top 9</span></span>
+<span id="cb6-29"><a href="#cb6-29" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Impute Missing Values, Use Best Nine Features:"</span>)</span>
+<span id="cb6-30"><a href="#cb6-30" aria-hidden="true" tabindex="-1"></a>train, test <span class="op">=</span> train_test_split(df_impute_t9, test_size<span class="op">=</span><span class="fl">0.2</span>)</span>
+<span id="cb6-31"><a href="#cb6-31" aria-hidden="true" tabindex="-1"></a>X_train <span class="op">=</span> train.drop([<span class="st">'Arrivals'</span>], axis<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb6-32"><a href="#cb6-32" aria-hidden="true" tabindex="-1"></a>y_train <span class="op">=</span> train[[<span class="st">'Arrivals'</span>]]</span>
+<span id="cb6-33"><a href="#cb6-33" aria-hidden="true" tabindex="-1"></a>X_test <span class="op">=</span> test.drop([<span class="st">'Arrivals'</span>], axis<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb6-34"><a href="#cb6-34" aria-hidden="true" tabindex="-1"></a>y_test <span class="op">=</span> test[[<span class="st">'Arrivals'</span>]]</span>
+<span id="cb6-35"><a href="#cb6-35" aria-hidden="true" tabindex="-1"></a>evaluate_DT(X_train, y_train, X_test, y_test)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Drop Missing Values, Use All Features:
+score: -1.0293524315764553
+rmse: 1832.0020891214767
+classification accuracy: 0.9454545454545454
+
+
+Drop Missing Values, Use Best Nine Features:
+score: 0.9086362235559209
+rmse: 1686.7363933175686
+classification accuracy: 0.9932834092488226
+
+
+Impute Missing Values, Use All Features:
+score: 0.9141093025870605
+rmse: 1243.3944680840762
+classification accuracy: 0.8610654989965335
+
+
+Impute Missing Values, Use Best Nine Features:
+score: 0.8600721201782545
+rmse: 1622.8755875767067
+classification accuracy: 0.8631940643434897
+
+</code></pre>
+</div>
+</div>
+</section>
+<section id="random-forest" class="level3">
+<h3 class="anchored" data-anchor-id="random-forest">Random Forest</h3>
+<div id="cell-14" class="cell" data-execution_count="20">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># dropna</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Drop Missing Values, Use All Features:"</span>)</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>train, test <span class="op">=</span> train_test_split(df_dropna, test_size<span class="op">=</span><span class="fl">0.2</span>)</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>X_train <span class="op">=</span> train.drop([<span class="st">'Arrivals'</span>], axis<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>y_train <span class="op">=</span> train[[<span class="st">'Arrivals'</span>]]</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>X_test <span class="op">=</span> test.drop([<span class="st">'Arrivals'</span>], axis<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>y_test <span class="op">=</span> test[[<span class="st">'Arrivals'</span>]]</span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>evaluate_RF(X_train, y_train, X_test, y_test)</span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a><span class="co"># dropna top 9</span></span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Drop Missing Values, Use Best Nine Features:"</span>)</span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a>train, test <span class="op">=</span> train_test_split(df_dropna_t9, test_size<span class="op">=</span><span class="fl">0.2</span>)</span>
+<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a>X_train <span class="op">=</span> train.drop([<span class="st">'Arrivals'</span>], axis<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a>y_train <span class="op">=</span> train[[<span class="st">'Arrivals'</span>]]</span>
+<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a>X_test <span class="op">=</span> test.drop([<span class="st">'Arrivals'</span>], axis<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a>y_test <span class="op">=</span> test[[<span class="st">'Arrivals'</span>]]</span>
+<span id="cb8-17"><a href="#cb8-17" aria-hidden="true" tabindex="-1"></a>evaluate_RF(X_train, y_train, X_test, y_test)</span>
+<span id="cb8-18"><a href="#cb8-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-19"><a href="#cb8-19" aria-hidden="true" tabindex="-1"></a><span class="co"># impute</span></span>
+<span id="cb8-20"><a href="#cb8-20" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Impute Missing Values, Use All Features:"</span>)</span>
+<span id="cb8-21"><a href="#cb8-21" aria-hidden="true" tabindex="-1"></a>train, test <span class="op">=</span> train_test_split(df_impute, test_size<span class="op">=</span><span class="fl">0.2</span>)</span>
+<span id="cb8-22"><a href="#cb8-22" aria-hidden="true" tabindex="-1"></a>X_train <span class="op">=</span> train.drop([<span class="st">'Arrivals'</span>], axis<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb8-23"><a href="#cb8-23" aria-hidden="true" tabindex="-1"></a>y_train <span class="op">=</span> train[[<span class="st">'Arrivals'</span>]]</span>
+<span id="cb8-24"><a href="#cb8-24" aria-hidden="true" tabindex="-1"></a>X_test <span class="op">=</span> test.drop([<span class="st">'Arrivals'</span>], axis<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb8-25"><a href="#cb8-25" aria-hidden="true" tabindex="-1"></a>y_test <span class="op">=</span> test[[<span class="st">'Arrivals'</span>]]</span>
+<span id="cb8-26"><a href="#cb8-26" aria-hidden="true" tabindex="-1"></a>evaluate_RF(X_train, y_train, X_test, y_test)</span>
+<span id="cb8-27"><a href="#cb8-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-28"><a href="#cb8-28" aria-hidden="true" tabindex="-1"></a><span class="co"># impute top 9</span></span>
+<span id="cb8-29"><a href="#cb8-29" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Impute Missing Values, Use Best Nine Features:"</span>)</span>
+<span id="cb8-30"><a href="#cb8-30" aria-hidden="true" tabindex="-1"></a>train, test <span class="op">=</span> train_test_split(df_impute_t9, test_size<span class="op">=</span><span class="fl">0.2</span>)</span>
+<span id="cb8-31"><a href="#cb8-31" aria-hidden="true" tabindex="-1"></a>X_train <span class="op">=</span> train.drop([<span class="st">'Arrivals'</span>], axis<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb8-32"><a href="#cb8-32" aria-hidden="true" tabindex="-1"></a>y_train <span class="op">=</span> train[[<span class="st">'Arrivals'</span>]]</span>
+<span id="cb8-33"><a href="#cb8-33" aria-hidden="true" tabindex="-1"></a>X_test <span class="op">=</span> test.drop([<span class="st">'Arrivals'</span>], axis<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb8-34"><a href="#cb8-34" aria-hidden="true" tabindex="-1"></a>y_test <span class="op">=</span> test[[<span class="st">'Arrivals'</span>]]</span>
+<span id="cb8-35"><a href="#cb8-35" aria-hidden="true" tabindex="-1"></a>evaluate_RF(X_train, y_train, X_test, y_test)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Drop Missing Values, Use All Features:
+score: -0.41771466376163113
+rmse: 1925.9235858153875
+classification accuracy: 0.9272727272727272
+
+
+Drop Missing Values, Use Best Nine Features:
+score: 0.963600818038985
+rmse: 1194.1962938556157
+classification accuracy: 0.9922797807457732
+
+
+Impute Missing Values, Use All Features:
+score: 0.9530521565094427
+rmse: 971.2710461948245
+classification accuracy: 0.8653834458432159
+
+
+Impute Missing Values, Use Best Nine Features:
+score: 0.9251482120105943
+rmse: 1137.0446510214172
+classification accuracy: 0.8624186583956699
+
+</code></pre>
+</div>
+</div>
+</section>
+<section id="dataset-outliers" class="level3">
+<h3 class="anchored" data-anchor-id="dataset-outliers">Dataset Outliers</h3>
+<p>The dataset contained several large outliers for our target column (“Arrivals”) that were throwing off the RMSE calculations. The 95th percentile of arrivals was 3,701; in other words 90% of arrivales were 3,701 or fewer people. However, the maximum number of arrivals for a single observation was 259,678. This implies the existence of some large outliers in the dataset that skew the RMSE calculation, making the models seem to perform worse than they actually do.</p>
+<div id="cell-16" class="cell" data-execution_count="21">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f'90th percentile: </span><span class="ch">\n</span><span class="sc">{</span>df[<span class="st">"Arrivals"</span>]<span class="sc">.</span>quantile(q<span class="op">=</span><span class="fl">0.95</span>)<span class="sc">}</span><span class="ss"> </span><span class="ch">\n</span><span class="ss">'</span>)</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f'arrivals statistics: </span><span class="ch">\n</span><span class="sc">{</span>df[<span class="st">"Arrivals"</span>]<span class="sc">.</span>describe()<span class="sc">}</span><span class="ss">'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>90th percentile: 
+3701.0 
+
+arrivals statistics: 
+count    191416.000000
+mean       1226.451807
+std        5534.244627
+min           1.000000
+25%          49.000000
+50%         194.000000
+75%         614.000000
+max      259678.000000
+Name: Arrivals, dtype: float64</code></pre>
+</div>
+</div>
+</section>
+<section id="impute-disadvantages" class="level3">
+<h3 class="anchored" data-anchor-id="impute-disadvantages">Impute Disadvantages</h3>
+<p>When we impute the data, we are filling in the missing values with an estimate based on the other present features. However, when we impute this dataset, we actually end up with some negative values in the arrival column, which is impossible. This can be problematic because it can teach the models to predict negative arrivals, which are impossible observations. We can see that 16% of our imputed data is negative.</p>
+<div id="cell-18" class="cell" data-execution_count="22">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> count_negative(values):</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>    count <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> value <span class="kw">in</span> values:</span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> value <span class="op">&lt;</span> <span class="dv">0</span>:</span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>            count <span class="op">+=</span> <span class="dv">1</span></span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> count</span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"percent of imputed arrival data that is negative: </span><span class="sc">{</span>count_negative(df_impute[<span class="st">'Arrivals'</span>])<span class="op">/</span> <span class="bu">len</span>(y_train[<span class="st">'Arrivals'</span>]) <span class="op">*</span> <span class="dv">100</span><span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>percent of imputed arrival data that is negative: 16.29023429779082</code></pre>
+</div>
+</div>
+</section>
+<section id="data-and-model-visualizations" class="level3">
+<h3 class="anchored" data-anchor-id="data-and-model-visualizations">Data and Model Visualizations</h3>
+<p>We created the following visualizations of our data and our best model’s (Decision Tree trained on `df_dropna_t9) predictions. The following plot shows how the number of refugee arrivals changes over time.</p>
+<div id="cell-20" class="cell" data-execution_count="23">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>counts <span class="op">=</span> (df.groupby([<span class="st">'Year'</span>, <span class="st">'Month'</span>])[<span class="st">'Arrivals'</span>].<span class="bu">sum</span>().reset_index()).copy()</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Set figure size</span></span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">18</span>, <span class="dv">6</span>))</span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Combine year and month to create a new column for x-axis</span></span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>counts[<span class="st">'Year-Month'</span>] <span class="op">=</span> counts[<span class="st">'Year'</span>].astype(<span class="bu">str</span>) <span class="op">+</span> <span class="st">'/'</span> <span class="op">+</span> counts[<span class="st">'Month'</span>].astype(<span class="bu">str</span>)</span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a>counts <span class="op">=</span> counts.sort_values(by<span class="op">=</span>[<span class="st">'Year-Month'</span>, <span class="st">'Arrivals'</span>], ascending<span class="op">=</span>[<span class="va">True</span>, <span class="va">True</span>])</span>
+<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a>months <span class="op">=</span> [<span class="st">'Jan'</span>, <span class="st">'Feb'</span>, <span class="st">'Mar'</span>, <span class="st">'Apr'</span>, <span class="st">'May'</span>, <span class="st">'Jun'</span>, <span class="st">'Jul'</span>, <span class="st">'Aug'</span>, <span class="st">'Sep'</span>, <span class="st">'Oct'</span>, <span class="st">'Nov'</span>, <span class="st">'Dec'</span>]</span>
+<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(counts[<span class="st">'Year-Month'</span>])):</span>
+<span id="cb14-12"><a href="#cb14-12" aria-hidden="true" tabindex="-1"></a>    update <span class="op">=</span> counts[<span class="st">'Year-Month'</span>][i]</span>
+<span id="cb14-13"><a href="#cb14-13" aria-hidden="true" tabindex="-1"></a>    updateSlice <span class="op">=</span> update[<span class="op">-</span><span class="dv">1</span>]</span>
+<span id="cb14-14"><a href="#cb14-14" aria-hidden="true" tabindex="-1"></a>    updateMonth <span class="op">=</span>  months[<span class="bu">int</span>(updateSlice)]</span>
+<span id="cb14-15"><a href="#cb14-15" aria-hidden="true" tabindex="-1"></a>    counts[<span class="st">'Year-Month'</span>][i] <span class="op">=</span> counts[<span class="st">'Year-Month'</span>][i][<span class="dv">0</span>:<span class="dv">4</span>] <span class="op">+</span> <span class="st">'/'</span> <span class="op">+</span> updateMonth</span>
+<span id="cb14-16"><a href="#cb14-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-17"><a href="#cb14-17" aria-hidden="true" tabindex="-1"></a><span class="co"># Set x-axis ticks and labels</span></span>
+<span id="cb14-18"><a href="#cb14-18" aria-hidden="true" tabindex="-1"></a>x_ticks <span class="op">=</span> counts[<span class="st">'Year-Month'</span>].unique()</span>
+<span id="cb14-19"><a href="#cb14-19" aria-hidden="true" tabindex="-1"></a>x_labels <span class="op">=</span> counts[<span class="st">'Month'</span>].unique()</span>
+<span id="cb14-20"><a href="#cb14-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-21"><a href="#cb14-21" aria-hidden="true" tabindex="-1"></a><span class="co"># Loop through each year and plot the number of orders as bars</span></span>
+<span id="cb14-22"><a href="#cb14-22" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> year <span class="kw">in</span> counts[<span class="st">'Year'</span>].unique():</span>
+<span id="cb14-23"><a href="#cb14-23" aria-hidden="true" tabindex="-1"></a>    year_data <span class="op">=</span> counts[counts[<span class="st">'Year'</span>] <span class="op">==</span> year]</span>
+<span id="cb14-24"><a href="#cb14-24" aria-hidden="true" tabindex="-1"></a>    plt.bar(year_data[<span class="st">'Year-Month'</span>], year_data[<span class="st">'Arrivals'</span>], label<span class="op">=</span><span class="bu">str</span>(year), alpha<span class="op">=</span><span class="fl">0.7</span>)</span>
+<span id="cb14-25"><a href="#cb14-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-26"><a href="#cb14-26" aria-hidden="true" tabindex="-1"></a><span class="co"># Set x-axis ticks and labels</span></span>
+<span id="cb14-27"><a href="#cb14-27" aria-hidden="true" tabindex="-1"></a>plt.xticks(ticks<span class="op">=</span><span class="bu">range</span>(<span class="bu">len</span>(x_ticks)))</span>
+<span id="cb14-28"><a href="#cb14-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-29"><a href="#cb14-29" aria-hidden="true" tabindex="-1"></a><span class="co"># Rotate x-axis labels for better readability</span></span>
+<span id="cb14-30"><a href="#cb14-30" aria-hidden="true" tabindex="-1"></a>plt.xticks(rotation<span class="op">=</span><span class="dv">90</span>, ha<span class="op">=</span><span class="st">'right'</span>)</span>
+<span id="cb14-31"><a href="#cb14-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-32"><a href="#cb14-32" aria-hidden="true" tabindex="-1"></a><span class="co"># Add labels and title</span></span>
+<span id="cb14-33"><a href="#cb14-33" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Month'</span>)</span>
+<span id="cb14-34"><a href="#cb14-34" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Number of Arrivals'</span>)</span>
+<span id="cb14-35"><a href="#cb14-35" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Number of Arrivals by Month Over Time'</span>)</span>
+<span id="cb14-36"><a href="#cb14-36" aria-hidden="true" tabindex="-1"></a>plt.legend(title<span class="op">=</span><span class="st">'Year'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/cell-10-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>We see that many of the arrivals occur in the summer months and that these arrival numbers are significantly larger than in the winter months. This trend seems to hold before and after the COVID-19 pandemic. We also see that there are more arrivals starting from 2017 onwards, this might be due to better data collection, but it is hard to know for sure.</p>
+<p>We can also visualize how our model does in predicting arrivals. First, we build our best model and calculate the differences between its predictions and the true vales.</p>
+<div id="cell-22" class="cell" data-execution_count="24">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># build our best model</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>train, test <span class="op">=</span> train_test_split(df_dropna_t9, test_size<span class="op">=</span><span class="fl">0.2</span>)</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>X_train <span class="op">=</span> train.drop([<span class="st">'Arrivals'</span>], axis<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>y_train <span class="op">=</span> train[[<span class="st">'Arrivals'</span>]]</span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>X_test <span class="op">=</span> test.drop([<span class="st">'Arrivals'</span>], axis<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>y_test <span class="op">=</span> test[[<span class="st">'Arrivals'</span>]]</span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>DT <span class="op">=</span> DecisionTreeRegressor()</span>
+<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a>DT.fit(X_train, y_train)</span>
+<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a>preds <span class="op">=</span> DT.predict((X_test))</span>
+<span id="cb15-12"><a href="#cb15-12" aria-hidden="true" tabindex="-1"></a>y_true <span class="op">=</span> y_test.values.flatten()</span>
+<span id="cb15-13"><a href="#cb15-13" aria-hidden="true" tabindex="-1"></a>diffs <span class="op">=</span> preds <span class="op">-</span> y_true</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>When we plot a histogram of the differences between our best models predictions and the true values, we can see that the model makes very few significantly wrong predictions (a prediction off by 10 or more people). The plot is on a logarithmic x-axis, to show the number of mispredictions within one order of magnitude. Only mispredictions of 10 people or more are plotted. This supports our hypothesis that the large RMSE is coming from only a few predictions that are very wrong.</p>
+<div id="cell-24" class="cell" data-execution_count="25">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># plot only the differences greater than 100</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>bins <span class="op">=</span> [<span class="dv">10</span>, <span class="dv">100</span>, <span class="dv">1000</span>, <span class="dv">10000</span>, <span class="dv">100000</span>]</span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>plt.hist(diffs, bins<span class="op">=</span>bins, edgecolor<span class="op">=</span><span class="st">'black'</span>)</span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>plt.xscale(<span class="st">'log'</span>)</span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Add labels and title</span></span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Difference'</span>)</span>
+<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Frequency'</span>)</span>
+<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Histogram of Differences'</span>)</span>
+<span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-12"><a href="#cb16-12" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/cell-12-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Finally, we can calculate the percent of of the time that the model made a perfect prediction, i.e.&nbsp;predicted the exact number of arrivals. We can see that 98% of the time, the model correctly predicted the exact number of arrivals, further supporting the hypothesis the model is very accurate and the large RMSE comes from a few bad predictions that were very off.</p>
+<div id="cell-26" class="cell" data-execution_count="26">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f'percent of perfect predictions: </span><span class="sc">{</span>(np.count_nonzero(diffs <span class="op">==</span> <span class="dv">0</span>) <span class="op">/</span> <span class="bu">len</span>(diffs))<span class="sc">}</span><span class="ss">'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>percent of perfect predictions: 0.9805450474793485</code></pre>
+</div>
+</div>
+</section>
+</section>
+</section>
+<section id="conclusion" class="level1">
+<h1>Conclusion</h1>
+<p>After testing each model on each dataset, we found the following models scored the highest for each metric:</p>
+<table>
+<thead>
+<tr>
+<th align="center">
+Metric
+</th>
+<th align="center">
+Model
+</th>
+<th align="center">
+Value
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">
+R<sup>2</sup>
+</td>
+<td align="left">
+Random Forest on <code>df_impute</code>
+</td>
+<td align="left">
+0.965
+</td>
+</tr>
+<tr>
+<td align="left">
+RMSE
+</td>
+<td align="left">
+Random Forest on <code>df_impute</code>
+</td>
+<td align="left">
+784.980
+</td>
+</tr>
+<tr>
+<td align="left">
+Classification
+</td>
+<td align="left">
+Decision Tree on <code>df_dropna</code>
+</td>
+<td align="left">
+1.0
+</td>
+</tr>
+</tbody>
+</table>
+<p>However, given that <code>df_impute</code> contains negative values, which are impossible in the real scenario, and <code>df_dropna</code> has only 230 training rows, making the possibility of overfitting high, we believe that neither of these models would give helpful predictions. Instead, we think that a Decision Tree trained on <code>df_dropna_t9</code> would be the most useful in a real world scenario, as it would not predict negative values, is sufficiently large that overfitting is less of a worry, and still scores high. This models scores are given below:</p>
+<table>
+<thead>
+<tr>
+<th align="center">
+Metric
+</th>
+<th align="center">
+Best Model
+</th>
+<th align="center">
+Value
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">
+R<sup>2</sup>
+</td>
+<td align="left">
+Decision Tree on <code>df_dropna_t9</code>
+</td>
+<td align="left">
+0.946
+</td>
+</tr>
+<tr>
+<td align="left">
+RMSE
+</td>
+<td align="left">
+Decision Tree on <code>df_dropna_t9</code>
+</td>
+<td align="left">
+1360.971
+</td>
+</tr>
+<tr>
+<td align="left">
+Classification
+</td>
+<td align="left">
+Decision Tree on <code>df_dropna_t9</code>
+</td>
+<td align="left">
+0.994
+</td>
+</tr>
+</tbody>
+</table>
+<p>Our best model performs exceptionally well on the vast majority of predictions, perfectly predicting the exact number of arrivals 98% of the time. That said, it performs very poorly when trying to predict these large outliers, which is reflected in the high RMSE. If these observations are anomalies in the dataset that we would not reasonably expect to correctly predict given the data available, in other words, caused by some external factor not present in the data (such as a government ordering the evacuation of an area), then this error is not a huge issue. If, on the other hand, these observations are largely explained by the data we have available, then we would want to do better at predicting them. One way we could do this is to try to incentivize our model to be less conservative and make larger predictions. Without knowing more about these specific observations, it is hard to say which is the best course of action.</p>
+<section id="group-contributions" class="level2">
+<h2 class="anchored" data-anchor-id="group-contributions">Group Contributions</h2>
+<section id="mihir" class="level3">
+<h3 class="anchored" data-anchor-id="mihir">Mihir</h3>
+<p>I worked on some of the data collection, finding the specific datasets that we would use as well as working on finding ways to scrape and combine the CSVs. However, I primarily spent my time working on the models. This meant finding ways to process our data so that it was usable on logistic regression as well as working on encoding and imputing the data. Jamie and I built the functions to build, train, and evaluate our models in a file called models.py. Here, we had to address multiple issues including figuring out why our score values were so low and deciding what methods of evaluating for accuracy we would use. Do overcome these challenges, we looked out the outliers in our data and found a plausible explanation and created our own evaluation function. I also wrote the code to visualize the number of arrivals and the code to understand the disadvantages of imputing the data. Finally, all three of us worked on the presentation and I mainly wrote the abstract and approach section while working with Jamie on the results section.</p>
+</section>
+<section id="jamie" class="level3">
+<h3 class="anchored" data-anchor-id="jamie">Jamie</h3>
+<p>I helped build the web scraper and data aggregator functions in the source code. I helped write some of the code that built and evaluated the models in the blog post as well as visualized the models predictions. I helped write the Values Statement and Introduction, as well as parts of the results and conclusion.</p>
+</section>
+<section id="jake" class="level3">
+<h3 class="anchored" data-anchor-id="jake">Jake</h3>
+<p>I helped build a web scraper for market data. When we started building the models, I helped work on the ideal way to clean up the data, including imputing and removing NAs. I helped build and expand a few of the early models and expand on Jamie’s original neural network. I helped with the presentation and for our blog, I wrote our results section and our conclusion, drawing upon the data we found.</p>
+</section>
+</section>
+</section>
+<section id="group-contribution-statement" class="level1">
+<h1>Group contribution statement</h1>
+<p>I learned a great deal about data collection and data cleanup. Since we mostly used models we were familiar with, most of our work was coming a lot of disparate data into one CSV. It was also very interesting to work with data that was collected in the real world under real and dangerous circumstances. While this meant that the data was often incomplete, it felt meaningful. I also learned how to implement certain models given the data we had, but also do a lot of testing to see the optimal way—whether by imputing or cleaning with another method.</p>
+<p>I liked what I contributed to the project. Although I wish we met more to be able to contribute together so I could have learned about certain aspects like binning or models I was less familiar with, I do think I contributed a good share, especially when it came to the initial testing phase as well as creating the presentation and working on our blog post.</p>
+<p>In many ways I will cary on how to structure a project. Doing this in a blog—along with the other blog posts—is a good way to frame the data in a scientific and technical way, but something not too formal that I can use even in my personal ventures.</p>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>
