@@ -6,8 +6,11 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="Jake Gilbert, Mihir Singh, and Jamie Hackney">
+<meta name="dcterms.date" content="2024-05-20">
+<meta name="description" content="UNCHR Machine Learning Challenge - Predicting the movement of displaced peoples in Somalia">
 
-<title>My Awesome CSCI 0451 Blog - UNCHR - ML Challenge</title>
+<title>Jake’s Machine Learning Blog - UNCHR Machine Learning Challenge</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -131,7 +134,7 @@ background-size: cover;
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
     <a class="navbar-brand" href="../../index.html">
-    <span class="navbar-title">My Awesome CSCI 0451 Blog</span>
+    <span class="navbar-title">Jake’s Machine Learning Blog</span>
     </a>
   </div>
             <div id="quarto-search" class="" title="Search"></div>
@@ -165,14 +168,31 @@ background-size: cover;
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-body">
-      <h1 class="title">UNCHR - ML Challenge</h1>
-                      </div>
+      <h1 class="title">UNCHR Machine Learning Challenge</h1>
+                  <div>
+        <div class="description">
+          UNCHR Machine Learning Challenge - Predicting the movement of displaced peoples in Somalia
+        </div>
+      </div>
+                </div>
   </div>
     
   
   <div class="quarto-title-meta">
 
+      <div>
+      <div class="quarto-title-meta-heading">Author</div>
+      <div class="quarto-title-meta-contents">
+               <p>Jake Gilbert, Mihir Singh, and Jamie Hackney </p>
+            </div>
+    </div>
       
+      <div>
+      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">May 20, 2024</p>
+      </div>
+    </div>
     
       
     </div>
@@ -208,7 +228,7 @@ background-size: cover;
 </section>
 <section id="materials-and-methods" class="level2">
 <h2 class="anchored" data-anchor-id="materials-and-methods">Materials and Methods</h2>
-<div id="cell-2" class="cell" data-execution_count="15">
+<div id="cell-3" class="cell" data-execution_count="15">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
@@ -226,7 +246,7 @@ background-size: cover;
 <h3 class="anchored" data-anchor-id="our-data">Our Data</h3>
 <p>All of our data came from the Food Security and Nutrition Analysis Unit Dashboard for Somalia (FSNAU). This organization collects data related to food and security in Somalia. FSNAU provides access to this data through a public facing dashboard. Users can select what data they would like to look at and which time frames (in six month increments).</p>
 <p>For our data, focused on creating two datasets, one where we drop missing values and one where we impute them. Within these datasets, we further split them into all available features, and just the top nine features as recommended by the UNHCR in their previous work with this data (project <a href="https://jetson.unhcr.org/tech.html">Jetson</a>). Due to data availability, we focused on data from 2015 - 2024.</p>
-<div id="cell-4" class="cell" data-execution_count="16">
+<div id="cell-5" class="cell" data-execution_count="16">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># load data</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.read_csv(<span class="st">'data/combined_data.csv'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
@@ -234,7 +254,7 @@ background-size: cover;
 <section id="our-approach" class="level3">
 <h3 class="anchored" data-anchor-id="our-approach">Our Approach</h3>
 <p>The goal of our models was to predict the number of refugees arriving in a certain district in Somalia. We used the “Arrivals” column of our data as the target feature for our models to predict. For training features, we either trained our models on all features available on the FSNAU dashboard, or the nine features recommended by the UNHCR (region, district, month, year, rainfall, number of conflict fatalities, number of conflict incidents, water price, and goat price). We chose to run models trained on these nine features because the UN found these particularly helpful when building their own machine learning models (<a href="https://jetson.unhcr.org/tech.html">Jetson Data</a>). For all models, we dropped the feature describing the number of departures because such data can only be collected after the fact. That is, at the time this model would be run in a “real” scenario, there would be no way of knowing the number of departures in a district for the entire month; a month must first pass for this data to become known. Finally, we split the data into train and test groups, with 80% of the data in the train split and 20% of the data in the test split. Depending on the dataset used, the exact number of rows varied, but for the dataset we found to be best (dropping missing values and only using the nine best features), we had 51,812 train rows and 12,953 test rows.</p>
-<div id="cell-6" class="cell" data-execution_count="17">
+<div id="cell-7" class="cell" data-execution_count="17">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># create four dataframes of the data</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>df_dropna <span class="op">=</span> dropNA(df)</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>df_dropna_t9 <span class="op">=</span> dropNA(df, top_9<span class="op">=</span><span class="va">True</span>)</span>
@@ -274,7 +294,7 @@ background-size: cover;
 <p>We evaluate the models using three different metrics, R<sup>2</sup>, RMSE, and the alarm level classification accuracy. The R<sup>2</sup> value measures how well the model explains the observed data values. RMSE measures the average error for a prediction, with the interpretation being that the RMSE value is the average number of people the predictions are off by. Finally, the classification accuracy measures how often the models correctly predict the alarm level. In other words, the classification accuracy is how often the models can correctly predict whether the arrivals will be less than 1000 people, between 1000 and 5000 people, or greater than 5000 people. The tables below show the model performances when evaluated with each of these metrics on the testing data.</p>
 <section id="linear-regression" class="level3">
 <h3 class="anchored" data-anchor-id="linear-regression">Linear Regression</h3>
-<div id="cell-10" class="cell" data-execution_count="18">
+<div id="cell-11" class="cell" data-execution_count="18">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># dropna</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Drop Missing Values, Use All Features:"</span>)</span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>train, test <span class="op">=</span> train_test_split(df_dropna, test_size<span class="op">=</span><span class="fl">0.2</span>)</span>
@@ -340,7 +360,7 @@ classification accuracy: 0.6812321352551237
 </section>
 <section id="decision-tree" class="level3">
 <h3 class="anchored" data-anchor-id="decision-tree">Decision Tree</h3>
-<div id="cell-12" class="cell" data-execution_count="19">
+<div id="cell-13" class="cell" data-execution_count="19">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># dropna</span></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Drop Missing Values, Use All Features:"</span>)</span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>train, test <span class="op">=</span> train_test_split(df_dropna, test_size<span class="op">=</span><span class="fl">0.2</span>)</span>
@@ -406,7 +426,7 @@ classification accuracy: 0.8631940643434897
 </section>
 <section id="random-forest" class="level3">
 <h3 class="anchored" data-anchor-id="random-forest">Random Forest</h3>
-<div id="cell-14" class="cell" data-execution_count="20">
+<div id="cell-15" class="cell" data-execution_count="20">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># dropna</span></span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Drop Missing Values, Use All Features:"</span>)</span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>train, test <span class="op">=</span> train_test_split(df_dropna, test_size<span class="op">=</span><span class="fl">0.2</span>)</span>
@@ -473,7 +493,7 @@ classification accuracy: 0.8624186583956699
 <section id="dataset-outliers" class="level3">
 <h3 class="anchored" data-anchor-id="dataset-outliers">Dataset Outliers</h3>
 <p>The dataset contained several large outliers for our target column (“Arrivals”) that were throwing off the RMSE calculations. The 95th percentile of arrivals was 3,701; in other words 90% of arrivales were 3,701 or fewer people. However, the maximum number of arrivals for a single observation was 259,678. This implies the existence of some large outliers in the dataset that skew the RMSE calculation, making the models seem to perform worse than they actually do.</p>
-<div id="cell-16" class="cell" data-execution_count="21">
+<div id="cell-17" class="cell" data-execution_count="21">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f'90th percentile: </span><span class="ch">\n</span><span class="sc">{</span>df[<span class="st">"Arrivals"</span>]<span class="sc">.</span>quantile(q<span class="op">=</span><span class="fl">0.95</span>)<span class="sc">}</span><span class="ss"> </span><span class="ch">\n</span><span class="ss">'</span>)</span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f'arrivals statistics: </span><span class="ch">\n</span><span class="sc">{</span>df[<span class="st">"Arrivals"</span>]<span class="sc">.</span>describe()<span class="sc">}</span><span class="ss">'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -496,7 +516,7 @@ Name: Arrivals, dtype: float64</code></pre>
 <section id="impute-disadvantages" class="level3">
 <h3 class="anchored" data-anchor-id="impute-disadvantages">Impute Disadvantages</h3>
 <p>When we impute the data, we are filling in the missing values with an estimate based on the other present features. However, when we impute this dataset, we actually end up with some negative values in the arrival column, which is impossible. This can be problematic because it can teach the models to predict negative arrivals, which are impossible observations. We can see that 16% of our imputed data is negative.</p>
-<div id="cell-18" class="cell" data-execution_count="22">
+<div id="cell-19" class="cell" data-execution_count="22">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> count_negative(values):</span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>    count <span class="op">=</span> <span class="dv">0</span></span>
 <span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> value <span class="kw">in</span> values:</span>
@@ -513,7 +533,7 @@ Name: Arrivals, dtype: float64</code></pre>
 <section id="data-and-model-visualizations" class="level3">
 <h3 class="anchored" data-anchor-id="data-and-model-visualizations">Data and Model Visualizations</h3>
 <p>We created the following visualizations of our data and our best model’s (Decision Tree trained on `df_dropna_t9) predictions. The following plot shows how the number of refugee arrivals changes over time.</p>
-<div id="cell-20" class="cell" data-execution_count="23">
+<div id="cell-21" class="cell" data-execution_count="23">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>counts <span class="op">=</span> (df.groupby([<span class="st">'Year'</span>, <span class="st">'Month'</span>])[<span class="st">'Arrivals'</span>].<span class="bu">sum</span>().reset_index()).copy()</span>
 <span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Set figure size</span></span>
@@ -560,7 +580,7 @@ Name: Arrivals, dtype: float64</code></pre>
 </div>
 <p>We see that many of the arrivals occur in the summer months and that these arrival numbers are significantly larger than in the winter months. This trend seems to hold before and after the COVID-19 pandemic. We also see that there are more arrivals starting from 2017 onwards, this might be due to better data collection, but it is hard to know for sure.</p>
 <p>We can also visualize how our model does in predicting arrivals. First, we build our best model and calculate the differences between its predictions and the true vales.</p>
-<div id="cell-22" class="cell" data-execution_count="24">
+<div id="cell-23" class="cell" data-execution_count="24">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># build our best model</span></span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>train, test <span class="op">=</span> train_test_split(df_dropna_t9, test_size<span class="op">=</span><span class="fl">0.2</span>)</span>
 <span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>X_train <span class="op">=</span> train.drop([<span class="st">'Arrivals'</span>], axis<span class="op">=</span><span class="dv">1</span>)</span>
@@ -576,7 +596,7 @@ Name: Arrivals, dtype: float64</code></pre>
 <span id="cb15-13"><a href="#cb15-13" aria-hidden="true" tabindex="-1"></a>diffs <span class="op">=</span> preds <span class="op">-</span> y_true</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>When we plot a histogram of the differences between our best models predictions and the true values, we can see that the model makes very few significantly wrong predictions (a prediction off by 10 or more people). The plot is on a logarithmic x-axis, to show the number of mispredictions within one order of magnitude. Only mispredictions of 10 people or more are plotted. This supports our hypothesis that the large RMSE is coming from only a few predictions that are very wrong.</p>
-<div id="cell-24" class="cell" data-execution_count="25">
+<div id="cell-25" class="cell" data-execution_count="25">
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># plot only the differences greater than 100</span></span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>bins <span class="op">=</span> [<span class="dv">10</span>, <span class="dv">100</span>, <span class="dv">1000</span>, <span class="dv">10000</span>, <span class="dv">100000</span>]</span>
@@ -598,7 +618,7 @@ Name: Arrivals, dtype: float64</code></pre>
 </div>
 </div>
 <p>Finally, we can calculate the percent of of the time that the model made a perfect prediction, i.e.&nbsp;predicted the exact number of arrivals. We can see that 98% of the time, the model correctly predicted the exact number of arrivals, further supporting the hypothesis the model is very accurate and the large RMSE comes from a few bad predictions that were very off.</p>
-<div id="cell-26" class="cell" data-execution_count="26">
+<div id="cell-27" class="cell" data-execution_count="26">
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f'percent of perfect predictions: </span><span class="sc">{</span>(np.count_nonzero(diffs <span class="op">==</span> <span class="dv">0</span>) <span class="op">/</span> <span class="bu">len</span>(diffs))<span class="sc">}</span><span class="ss">'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>percent of perfect predictions: 0.9805450474793485</code></pre>

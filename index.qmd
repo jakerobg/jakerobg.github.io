@@ -1,5 +1,5 @@
 ---
-title: "My Awesome CSCI 0451 Blog"
+title: "Machine Learning Blog"
 listing:
   contents: posts
   sort: "date desc"
@@ -9,5 +9,7 @@ listing:
   filter-ui: false
 page-layout: full
 ---
+Welcome to my Machine Learning blog. Below you will find implementations of various ML algorithms and data explorations, including a submission for the UNCHR Machine Learning Challenge.
 
+---
  
